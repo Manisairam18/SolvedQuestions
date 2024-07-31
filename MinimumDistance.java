@@ -1,4 +1,3 @@
-package RedChip_EvilModeOn;
 
 import java.util.Scanner;
 
