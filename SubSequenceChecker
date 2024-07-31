@@ -1,0 +1,102 @@
+
+import java.util.Scanner;
+
+
+
+//public class SubsequenceChecker {
+//
+//	public static void main(String[] args) {
+//		Scanner scanner = new Scanner(System.in);
+//
+//		System.out.println("Enter string A: ");
+//		String A = scanner.nextLine();
+//
+//		System.out.println("Enter string B: ");
+//		String B = scanner.nextLine();
+//
+//		boolean isSubsequence = isSubsequenceCustom(A, B);
+//		System.out.println("Output: ");
+//
+//		System.out.println(isSubsequence ? "yes" : "no");
+//	}
+//
+//	public static boolean isSubsequenceCustom(String A, String B) {
+//		int aLength = A.length();
+//		int bLength = B.length();
+//
+//		int aPointer = 0;
+//		int bPointer = 0;
+//
+//		while (aPointer < aLength && bPointer < bLength) {
+//			if (A.charAt(aPointer) == B.charAt(bPointer)) {
+//				aPointer++;
+//			}
+//			bPointer++;
+//		}
+//
+//		return aPointer == aLength;
+//	}
+//}
+import java.util.Scanner;
+
+public class SubsequenceChecker {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+
+		// Read string A
+		System.out.println("Enter string A: ");
+		String A = scanner.nextLine();
+
+		// Check if A contains only letters
+		if (!containsOnlyLetters(A)) {
+			System.out.println("Warning: Input contains digits or special characters.");
+			return; // Exit the program
+		}
+
+		// Read string B
+		System.out.println("Enter string B: ");
+		String B = scanner.nextLine();
+
+		// Check if B contains only letters
+		if (!containsOnlyLetters(B)) {
+			System.out.println("Warning: Input contains digits or special characters.");
+			return; // Exit the program
+		}
+
+		// Determine if A is a subsequence of B and print the result
+		boolean isSubsequence = isSubsequenceCustom(A, B);
+		System.out.println("Output: ");
+		System.out.println(isSubsequence ? "yes" : "no");
+	}
+
+	// Custom method to check if A is a subsequence of B
+	public static boolean isSubsequenceCustom(String A, String B) {
+		int aLength = A.length();
+		int bLength = B.length();
+
+		int aPointer = 0;
+		int bPointer = 0;
+
+		while (aPointer < aLength && bPointer < bLength) {
+			if (A.charAt(aPointer) == B.charAt(bPointer)) {
+				aPointer++;
+			}
+			bPointer++;
+		}
+
+		// If aPointer has reached the end of A, then A is a subsequence of B
+		return aPointer == aLength;
+	}
+
+	// Method to check if a string contains only letters
+	public static boolean containsOnlyLetters(String str) {
+		for (char c : str.toCharArray()) {
+			// Check if the character is not within the range of 'a' to 'z' or 'A' to 'Z'
+			if (!((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))) {
+				return false;
+			}
+		}
+		return true;
+	}
+}
